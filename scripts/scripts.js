@@ -132,7 +132,7 @@ function init_game() {
 			player_yy = player_y;
 		}
 		var channel = new RTCMultiSession();
-		channel.send("" + player_xx + player_yy);
+		channel.send("x: " + player_xx + " y: " + player_yy);
 		
 		player.css({ left: player_x, top: player_y });
       });
