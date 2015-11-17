@@ -89,8 +89,8 @@ function setupDC1() {
 		}
 		dc1.onmessage = function (e) {
 			console.log("Got message (pc1)", e.data);
-			enemy_x = e.data.substring(0, 2);
-			enemy_y = e.data.substring(2, 5);
+			enemy_x = parseInt(e.data.substring(3, 7));
+			enemy_y = parseInt(e.data.substring(9, 13));
 			opponent.css({ left: enemy_x, top: enemy_y });
 			if (e.data.size) {
 				fileReceiver1.receive(e.data, {});
@@ -178,8 +178,8 @@ pc2.ondatachannel = function (e) {
 	}
 	dc2.onmessage = function (e) {
 		console.log("Got message (pc2)", e.data);
-		enemy_x = e.data.substring(0, 2);
-		enemy_y = e.data.substring(2, 5);
+		enemy_x = parseInt(e.data.substring(0, 2));
+		enemy_y = parseInt(e.data.substring(2, 5));
 		opponent.css({ left: enemy_x, top: enemy_y });
 		if (e.data.size) {
 			fileReceiver2.receive(e.data, {});
