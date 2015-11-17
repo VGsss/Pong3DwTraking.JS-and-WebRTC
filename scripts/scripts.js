@@ -12,6 +12,9 @@ function videoError(e) {document.write("Camera error. This can happen when you d
 var tracker = new tracking.ColorTracker(['yellow']);
 tracking.track('#video', tracker, {camera: true});
 
+var player_x;
+var player_y;
+
 function toggle_blocks() {
     if (enable_blocks) {
         // Turn blocks off
