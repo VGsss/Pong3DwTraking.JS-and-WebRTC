@@ -1,7 +1,6 @@
 /* See also:
 http://www.html5rocks.com/en/tutorials/webrtc/basics/
 https://code.google.com/p/webrtc-samples/source/browse/trunk/apprtc/index.html
-
 https://webrtc-demos.appspot.com/html/pc1.html
  */
 
