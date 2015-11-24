@@ -12,6 +12,9 @@ function videoError(e) {document.write("Camera error. This can happen when you d
 var tracker = new tracking.ColorTracker(['yellow']);
 tracking.track('#video', tracker, {camera: true});
 
+var player_x;
+var player_y;
+
 function toggle_blocks() {
     if (enable_blocks) {
         // Turn blocks off
@@ -120,14 +123,15 @@ function init_game() {
 		
 		if (rect.x * 2 < 400){
 			player_x = rect.x * 2;
-			document.getElementById("testevalorx").innerHTML = player_x;
 		}
 		//define o player_y como o lugar onde a cor esta sendo identificada
 		
 		if (rect.y * 2 < 400){
 			player_y = rect.y * 2;
-			document.getElementById("testevalory").innerHTML = player_y;
 		}
+		var channel = new RTCMultiSession();
+		channel.send("x: " + player_x / 2 + " y: " + player_y / 2);
+		
 		player.css({ left: player_x, top: player_y });
       });
     }});
@@ -299,9 +303,10 @@ function game_tick() {
     ball_horizontal = ball_horizontal - spin_horizontal;
     ball_vertical = ball_vertical - spin_vertical;
 
-   /*
-
-   // Move opponent
+	
+	//if(connection==true) opponent.css({ left: enemy_x, top: enemy_y });
+	
+	if(connection==false){
     var cur_left = parseInt(opponent.css("left"));
     var target_x = ((ball_left / 100 * tracer_width) + (ball.width() / 2)) / tracer_width;
     var current_x = (cur_left + 15) / 150;
@@ -323,8 +328,7 @@ function game_tick() {
     if (new_y < 0) new_y = 0;
     
     opponent.css({ left: new_x, top: new_y });
-	
-	*/
+	}
 
     // If the game is still going, set a timeout for the next game tick
     if (started) {
