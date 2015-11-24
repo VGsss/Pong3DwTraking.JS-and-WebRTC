@@ -12,8 +12,12 @@ var RTCMultiSession = function(options) {
 		data = message.file;
             else
 		data = JSON.stringify(message);
-
-	    activedc.send(data);
+	try{
+		activedc.send(data);
+	}
+	catch(data) {
+		document.getElementById("connection").innerHTML = "ERRO - Aperte F5";
+	}
 	}
     }
 };
