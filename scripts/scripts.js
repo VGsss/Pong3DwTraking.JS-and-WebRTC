@@ -9,6 +9,35 @@ if (navigator.getUserMedia) navigator.getUserMedia({video: true}, handleVideo, v
 function handleVideo(stream) {video.src = window.URL.createObjectURL(stream);}
 function videoError(e) {document.write("Camera error. This can happen when you don't have a webcam or another problem related to it.");}
 
+var game_speed = 0.2;
+var max_game_speed = 3;
+var velocity = 0.2;
+var dificulty = 'easy';
+
+var velocity_hash = {
+    'easy': 0.2,
+    'medium': 0.5,
+    'hard': 1
+};
+
+var max_game_speed_hash = {
+    'easy': 3,
+    'medium': 5,
+    'hard': 999
+};
+
+function easy(){
+    dificulty = 'easy';
+}
+
+function medium(){
+    dificulty = 'medium';
+}
+
+function hard(){
+    dificulty = 'hard';
+}
+
 var tracker = new tracking.ColorTracker(['yellow']);
 tracking.track('#video', tracker, {camera: true});
 
@@ -143,6 +172,10 @@ function init_game() {
 function start_game() {
     // Player clicked
     // Check if the player collides with the ball and the game hasn't started yet
+    game_speed = velocity_hash[dificulty];
+    velocity = velocity_hash[dificulty];
+    max_game_speed = max_game_speed_hash[dificulty];
+    
     if (player.collidesWith(ball).length == 1 && !started) {
         // Flash player
         player.css({ opacity: 0.9 });
@@ -200,8 +233,11 @@ function game_tick() {
                 opponent.animate({ opacity: 0.5 }, 200);
 
                 // Change ball direction and increase game speed
-                direction = -1;
-                game_speed += 0.5;
+                if(game_speed <= max_game_speed){
+                    game_speed += velocity;    
+                } else {
+                    game_speed = max_game_speed;
+                }
             }
         }
     }
