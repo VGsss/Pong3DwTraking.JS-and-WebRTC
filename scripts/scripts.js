@@ -9,6 +9,35 @@ if (navigator.getUserMedia) navigator.getUserMedia({video: true}, handleVideo, v
 function handleVideo(stream) {video.src = window.URL.createObjectURL(stream);}
 function videoError(e) {document.write("Camera error. This can happen when you don't have a webcam or another problem related to it.");}
 
+var game_speed = 0.2;
+var max_game_speed = 3;
+var velocity = 0.2;
+var dificulty = 'easy';
+
+var velocity_hash = {
+    'easy': 0.2,
+    'medium': 0.5,
+    'hard': 1
+};
+
+var max_game_speed_hash = {
+    'easy': 3,
+    'medium': 5,
+    'hard': 999
+};
+
+function easy(){
+    dificulty = 'easy';
+}
+
+function medium(){
+    dificulty = 'medium';
+}
+
+function hard(){
+    dificulty = 'hard';
+}
+
 var tracker = new tracking.ColorTracker(['yellow']);
 tracking.track('#video', tracker, {camera: true});
 
@@ -123,16 +152,14 @@ function init_game() {
 		
 		if (rect.x * 2 < 400){
 			player_x = rect.x * 2;
-			player_xx = player_x;
 		}
 		//define o player_y como o lugar onde a cor esta sendo identificada
 		
 		if (rect.y * 2 < 400){
 			player_y = rect.y * 2;
-			player_yy = player_y;
 		}
 		var channel = new RTCMultiSession();
-		channel.send("x: " + player_xx + " y: " + player_yy);
+		channel.send("x: " + player_x / 2 + " y: " + player_y / 2);
 		
 		player.css({ left: player_x, top: player_y });
       });
@@ -145,6 +172,10 @@ function init_game() {
 function start_game() {
     // Player clicked
     // Check if the player collides with the ball and the game hasn't started yet
+    game_speed = velocity_hash[dificulty];
+    velocity = velocity_hash[dificulty];
+    max_game_speed = max_game_speed_hash[dificulty];
+    
     if (player.collidesWith(ball).length == 1 && !started) {
         // Flash player
         player.css({ opacity: 0.9 });
@@ -202,8 +233,11 @@ function game_tick() {
                 opponent.animate({ opacity: 0.5 }, 200);
 
                 // Change ball direction and increase game speed
-                direction = -1;
-                game_speed += 0.5;
+                if(game_speed <= max_game_speed){
+                    game_speed += velocity;    
+                } else {
+                    game_speed = max_game_speed;
+                }
             }
         }
     }
@@ -306,11 +340,9 @@ function game_tick() {
     ball_vertical = ball_vertical - spin_vertical;
 
 	
-	opponent.css({ left: enemy_x, top: enemy_y });
+	//if(connection==true) opponent.css({ left: enemy_x, top: enemy_y });
 	
-   /*
-
-   // Move opponent
+	if(connection==false){
     var cur_left = parseInt(opponent.css("left"));
     var target_x = ((ball_left / 100 * tracer_width) + (ball.width() / 2)) / tracer_width;
     var current_x = (cur_left + 15) / 150;
@@ -332,8 +364,7 @@ function game_tick() {
     if (new_y < 0) new_y = 0;
     
     opponent.css({ left: new_x, top: new_y });
-	
-	*/
+	}
 
     // If the game is still going, set a timeout for the next game tick
     if (started) {
