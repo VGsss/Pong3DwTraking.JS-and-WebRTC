@@ -42,7 +42,7 @@ function Hideall() {
 };
 
 $('#createBtn').click(function () {
-	document.getElementById("connection").innerHTML = "CONECTANDO";
+	document.getElementById("connection").innerHTML = "Conectando";
 	document.getElementById("localOffer").style.visibility = "visible";
 	document.getElementById("remoteAnswer").style.visibility = "visible";
 	document.getElementById("answerRecdBtn").style.visibility = "visible";
@@ -64,7 +64,7 @@ $('#offerRecdBtn').click(function () {
 	var offer = $('#remoteOffer').val();
 	var offerDesc = new RTCSessionDescription(JSON.parse(offer));
 	console.log("Received remote offer", offerDesc);
-	document.getElementById("connection").innerHTML = "CONECTANDO";
+	document.getElementById("connection").innerHTML = "Conectando";
 	handleOfferFromPC1(offerDesc);
 });
 
@@ -84,14 +84,16 @@ function setupDC1() {
 		console.log("Created datachannel (pc1)");
 		dc1.onopen = function (e) {
 			console.log('data channel connect');
-			document.getElementById("connection").innerHTML = "CONECTADO";
+			document.getElementById("connection").innerHTML = "Conectando";
 			Hideall();
 		}
 		dc1.onmessage = function (e) {
 			console.log("Got message (pc1)", e.data);
 			enemy_x = parseInt(e.data.substring(3, 7));
 			enemy_y = parseInt(e.data.substring(9, 13));
-			opponent.css({ left: enemy_x, top: enemy_y });
+			
+			opponent.css({ left: enemy_x / 2, top: enemy_y / 2});
+				
 			if (e.data.size) {
 				fileReceiver1.receive(e.data, {});
 			} else {
@@ -129,7 +131,8 @@ pc1.onicecandidate = function (e) {
 
 function handleOnconnection() {
 	console.log("Datachannel connected");
-	document.getElementById("connection").innerHTML = "CONECTADO";
+	document.getElementById("connection").innerHTML = "Conectado";
+	connection=true;
 	Hideall();
 }
 pc1.onconnection = handleOnconnection;
@@ -173,14 +176,17 @@ pc2.ondatachannel = function (e) {
 	activedc = dc2;
 	dc2.onopen = function (e) {
 		console.log('data channel connected');
-		document.getElementById("connection").innerHTML = "CONECTADO";
+		document.getElementById("connection").innerHTML = "Conectado";
+		connection = true;
 		Hideall();
 	}
 	dc2.onmessage = function (e) {
 		console.log("Got message (pc2)", e.data);
 		enemy_x = parseInt(e.data.substring(3, 7));
 		enemy_y = parseInt(e.data.substring(9, 13));
-		opponent.css({ left: enemy_x, top: enemy_y });
+		
+		opponent.css({ left: enemy_x / 2, top: enemy_y / 2});
+		
 		if (e.data.size) {
 			fileReceiver2.receive(e.data, {});
 		} else {
