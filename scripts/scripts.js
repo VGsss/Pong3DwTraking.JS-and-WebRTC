@@ -129,7 +129,7 @@ function init_game() {
 		if (rect.y * 2 < 400){
 			player_y = rect.y * 2;
 		}
-		if(connection==true{})
+		if(connection==true){
 		var channel = new RTCMultiSession();
 		channel.send("x: " + player_x / 2 + " y: " + player_y / 2);
 		}
