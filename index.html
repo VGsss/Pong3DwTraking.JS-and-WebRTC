@@ -10,6 +10,7 @@
 </head> 
 <body> 
 
+
 <div id="board">
     <div id="game">
         <div id="player"></div>
@@ -54,8 +55,6 @@
 
 <div id="scoreboard">0 - 0</div>
 
-<div id="blocks"></div>
-
 <br>
 
 <div id="multiplayer">
@@ -80,13 +79,16 @@
 </div>
 
 <div id="header">
-	<h1>jPong<small>3d Pong using jQuery</small></h1>
-	<h2><a href="http://www.marcofolio.net/" title="Visit Marcofolio.net">Marcofolio.net</a></h2>
-	<div id="content">
-		<p>This nifty little game has been created by friend and ex-classmate <strong>Sidney te Grotenhuis</strong>. Simply move the cursor over the field below to see your pong-paddle move. Click to hit the ball and see it fly to the opponent. Don't forget to hit back, otherwise your opponent will gain one point.</p>
-		<p>Also, some kind of power-up is included. If you toggle this feature on (below the field), you'll be rewarded for throwing a <em>curve ball</em>. A static paddle is added to your side, so you'll be able to create a wall of paddles that'll help you to keep the ball from flying behind you! Good luck beating your browser at this HTML and <a href="http://jquery.com/" title="jQuery">jQuery</a> game.</p>
+	Original project: <h2><a href="http://www.marcofolio.net/" title="Visit Marcofolio.net">Marcofolio.net</a></h2>
+	<div id="instructions">
+		SinglePlayer:
+		After your webcam started showing video, place a <b><yellow>Yellow</yellow></b> object in front of it and use as a controller to the racket, you will see that the racket moves when you move the yellow object in front of cammera.
+		Then, place the racket behind the ball, and move and click your mouse inside the field of the game. The game will start. Enjoy.
+		Multiplayer:
+		Same instructions as Singleplayer but this time, if you be a host, you need to click the Host button, and copy the code that will pop up and send it to the second player. The second player will have to place the code send by you in the box that will appear after they clicked in the Guest button.
+		After they placed the code, they have to click in the Okay,I Pasted it button then send to you the generated code in the box below the one that they copy/pasted your code and send it to you. You will have to place the code they send in the box below the code that was generated when you clicked the Host button and click in Try to Connect button.
+		The connection will occour and if it connect you will see the Connected status below the playfield
 	</div>
-</div>
 
 	<script type="text/javascript">
 	var enemy_x = 200;
