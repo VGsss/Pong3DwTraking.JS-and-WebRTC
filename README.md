@@ -1,4 +1,4 @@
-# JpongWtraking.js
+# Pong3DwTraking.JS-and-WebRTC
 Pong3D using traking.js 
 
 Source for Pong: http://www.marcofolio.net/webdesign/jpong_3d_pong_created_with_jquery.html
