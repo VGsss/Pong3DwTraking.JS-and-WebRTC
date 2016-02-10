@@ -30,34 +30,20 @@ var activedc;
 var pc1icedone = false;
 
 function Hideall() {
-	document.getElementById("localOffer").style.visibility = "hidden";
-	document.getElementById("remoteAnswer").style.visibility = "hidden";
-	document.getElementById("answerRecdBtn").style.visibility = "hidden";
-	document.getElementById("createBtn").style.visibility = "hidden";
-	document.getElementById("joinBtn").style.visibility = "hidden";
-	document.getElementById("remoteOffer").style.visibility = "hidden";
-	document.getElementById("offerRecdBtn").style.visibility = "hidden";
-	document.getElementById("localAnswer").style.visibility = "hidden";
-	document.getElementById("answerSentBtn").style.visibility = "hidden";
+	$("#hide").click(function(){
+    $("host").hide();
+	$("guest").hide();
+});
 };
 
 $('#createBtn').click(function () {
 	document.getElementById("connection").innerHTML = "Conectando";
-	document.getElementById("localOffer").style.visibility = "visible";
-	document.getElementById("remoteAnswer").style.visibility = "visible";
-	document.getElementById("answerRecdBtn").style.visibility = "visible";
-	document.getElementById("createBtn").style.visibility = "hidden";
-	document.getElementById("joinBtn").style.visibility = "hidden";
+    $("host").show();
 	createLocalOffer();
 });
 
 $('#joinBtn').click(function () {
-	document.getElementById("createBtn").style.visibility = "hidden";
-	document.getElementById("joinBtn").style.visibility = "hidden";
-	document.getElementById("remoteOffer").style.visibility = "visible";
-	document.getElementById("offerRecdBtn").style.visibility = "visible";
-	document.getElementById("localAnswer").style.visibility = "visible";
-	document.getElementById("answerSentBtn").style.visibility = "visible";
+    $("guest").show();
 });
 
 $('#offerRecdBtn').click(function () {
