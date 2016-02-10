@@ -54,7 +54,23 @@
 </div>
 
 <div id="scoreboard">0 - 0</div>
+<br>
+<center>
+<font color = "white">Original project: <a href="http://www.marcofolio.net/">Visit Marcofolio.net</a></font>
+</center>
 
+<div id="instructions" style="color:#FFFFFF">
+	<br>
+	<center>SinglePlayer:</center><br>
+	After your webcam started showing video, place a <b><font color = "yellow">Yellow</font></b> object in front of it and use as a controller to the racket, you will see that the racket moves when you move the yellow object in front of cammera.
+	Then, place the racket behind the ball, and move and click your mouse inside the field of the game. The game will start. Enjoy.
+	<br>
+	<br>
+	<center>Multiplayer:</center><br>
+	Same instructions as Singleplayer but this time, if you be a host, you need to click the Host button, and copy the code that will pop up and send it to the second player. The second player will have to place the code send by you in the box that will appear after they clicked in the Guest button.
+	After they placed the code, they have to click in the Okay,I Pasted it button then send to you the generated code in the box below the one that they copy/pasted your code and send it to you. You will have to place the code they send in the box below the code that was generated when you clicked the Host button and click in Try to Connect button.
+	The connection will occour and if it connect you will see the Connected status below the playfield
+</div>
 <br>
 
 <div id="multiplayer">
@@ -66,41 +82,40 @@
 </center>
 
 <!-- HOST -->
-<textarea id="localOffer" name="localOffer" rows="10" cols="100" style="visibility:hidden;"></textarea>
-<textarea id="remoteAnswer" name="remoteAnswer" rows="10" cols="100" style="visibility:hidden;"></textarea>
-<button id="answerRecdBtn" style="visibility:hidden;">Try to Connect</button>
+<host>
+<center>
+<textarea id="localOffer" name="localOffer" rows="10" cols="100"></textarea>
+<textarea id="remoteAnswer" name="remoteAnswer" rows="10" cols="100"></textarea>
+<br>
+<button id="answerRecdBtn" >Connect</button>
+</div>
 <br>
 
 <!-- GUEST -->
-<textarea id="remoteOffer" name="remoteOffer" rows="10" cols="100" style="visibility:hidden;"></textarea>
-<button  id="offerRecdBtn" style="visibility:hidden;">Okay, I pasted it.</button>
-<textarea id="localAnswer" name="localAnswer" rows="10" cols="100" style="visibility:hidden;"></textarea>
-<button id="answerSentBtn" style="visibility:hidden;"> Okay, I sent it.</button>
+<guest>
+<center>
+<textarea id="remoteOffer" name="remoteOffer" rows="10" cols="100"></textarea>
+<br>
+<button  id="offerRecdBtn" >Okay, I pasted it.</button>
+<br>
+<textarea id="localAnswer" name="localAnswer" rows="10" cols="100"></textarea>
+<br>
+<button id="answerSentBtn" > Okay, I sent it.</button>
 </div>
-
-<div id="header">
-	Original project:<font color = "white"></font><a href="http://www.marcofolio.net/">Visit Marcofolio.net</a></font>
-	<div id="instructions" style="color:#FFFFFF">
-		SinglePlayer:<br>
-		After your webcam started showing video, place a <b><font color = "yellow">Yellow</font></b> object in front of it and use as a controller to the racket, you will see that the racket moves when you move the yellow object in front of cammera.
-		Then, place the racket behind the ball, and move and click your mouse inside the field of the game. The game will start. Enjoy.
-		<br>
-		Multiplayer:<br>
-		Same instructions as Singleplayer but this time, if you be a host, you need to click the Host button, and copy the code that will pop up and send it to the second player. The second player will have to place the code send by you in the box that will appear after they clicked in the Guest button.
-		After they placed the code, they have to click in the Okay,I Pasted it button then send to you the generated code in the box below the one that they copy/pasted your code and send it to you. You will have to place the code they send in the box below the code that was generated when you clicked the Host button and click in Try to Connect button.
-		The connection will occour and if it connect you will see the Connected status below the playfield
-	</div>
-
+</div>
+</center>
+	<script type="text/javascript" src="scripts/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="scripts/jquery.drawline.js"></script>
 	<script type="text/javascript">
 	var enemy_x = 200;
 	var enemy_y = 200;
 	var player_x = 200;
 	var player_y = 200;
 	var connection= false;
-
+	$("host").hide();
+	$("guest").hide();
 	</script>
-	<script type="text/javascript" src="scripts/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="scripts/jquery.drawline.js"></script>
+	
 	<script type="text/javascript" src="scripts/collision.js"></script>
 	<script type="text/javascript" src="scripts/tracking-min.js"></script>
 	<script type="text/javascript" src="scripts/adapter.js"></script>
@@ -108,6 +123,8 @@
 	<script type="text/javascript" src="scripts/file-transfer.js"></script>
     <script type="text/javascript" src="scripts/scripts.js"></script>
 	
-	<center></center><a  style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">GITHUB</a></center>
+	<br>
+	<br>
+	<center><a  style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">Link to the Github</a></center>
 </body>
 </html>
