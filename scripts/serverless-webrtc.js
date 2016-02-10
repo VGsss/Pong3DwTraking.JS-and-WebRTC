@@ -37,13 +37,13 @@ function Hideall() {
 
 $('#createBtn').click(function () {
 	document.getElementById("connection").innerHTML = "Conectando";
-    	$(this).hide();
+    	$("#createBtn").hide();
     	$("host").show();
 	createLocalOffer();
 });
 
 $('#joinBtn').click(function () {
-	$(this).hide();
+	$("#joinBtn").hide();
 	$("guest").show();
 });
 
