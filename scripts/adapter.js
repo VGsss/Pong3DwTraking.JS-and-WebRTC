@@ -44,7 +44,7 @@ if (navigator.mozGetUserMedia) {
     return [];
   };
 } else if (navigator.webkitGetUserMedia) {
-  console.log("This appears to be Chrome");
+  alert("Chrome doesn't support this application, please open it with firefox");
 
   webrtcDetectedBrowser = "chrome";
 
