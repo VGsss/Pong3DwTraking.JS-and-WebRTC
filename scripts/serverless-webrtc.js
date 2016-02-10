@@ -30,20 +30,21 @@ var activedc;
 var pc1icedone = false;
 
 function Hideall() {
-	$("#hide").click(function(){
-    $("host").hide();
+	$("host").hide();
 	$("guest").hide();
 });
 };
 
 $('#createBtn').click(function () {
 	document.getElementById("connection").innerHTML = "Conectando";
-    $("host").show();
+    	$(this).hide();
+    	$("host").show();
 	createLocalOffer();
 });
 
 $('#joinBtn').click(function () {
-    $("guest").show();
+	$(this).hide();
+	$("guest").show();
 });
 
 $('#offerRecdBtn').click(function () {
