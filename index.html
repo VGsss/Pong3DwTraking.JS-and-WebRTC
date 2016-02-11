@@ -1,16 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"> 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"> 
+<html>
 <head> 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-	<title>jPong - 3d Pong using jQuery with traking.js</title>
-    <link rel="stylesheet" href="style.css" type="text/css" />
-	
-	<div><center><video id="video" width="300" height="225" preload autoplay loop muted controls></video></div>
-	
-</head> 
+<title>Traking jPong RTC</title>
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head> 	
+
 <body> 
 
-
+	<!-- HTML5 component that shows the video -->	
+	<div><center><video id="video" width="300" height="225" preload autoplay loop muted controls></video></div>
+<br>
 <div id="board">
     <div id="game">
         <div id="player"></div>
@@ -114,16 +112,18 @@
 	$("host").hide();
 	$("guest").hide();
 </script>
-	
+
 <script type="text/javascript" src="scripts/collision.js"></script>
 <script type="text/javascript" src="scripts/tracking-min.js"></script>
 <script type="text/javascript" src="scripts/adapter.js"></script>
 <script type="text/javascript" src="scripts/serverless-webrtc.js"></script>
 <script type="text/javascript" src="scripts/file-transfer.js"></script>
 <script type="text/javascript" src="scripts/scripts.js"></script>
-	
-	<br>
-	<br>
-	<center><a  style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">Link to the Github</a></center>
+
+<br>
+<br>
+
+<center><a  style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">Link to the Github</a></center>
+
 </body>
 </html>
