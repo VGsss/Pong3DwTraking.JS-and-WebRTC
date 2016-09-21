@@ -44,9 +44,7 @@ if (navigator.mozGetUserMedia) {
     return [];
   };
 } else if (navigator.webkitGetUserMedia) {
-  alert("Chrome doesn't support this application, please open it with firefox");
-
-  webrtcDetectedBrowser = "chrome";
+    webrtcDetectedBrowser = "chrome";
 
   // The RTCPeerConnection object.
   RTCPeerConnection = webkitRTCPeerConnection;
