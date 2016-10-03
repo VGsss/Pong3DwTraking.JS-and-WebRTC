@@ -6,7 +6,7 @@
 
 <body> 
 	
-	<div align="center"><video id="video" width="300" height="225" preload autoplay loop muted ></video></div>
+	<div><center><video id="video" width="300" height="225" preload autoplay loop muted ></video></div>
 <br>
 <div id="board">
     <div id="game">
@@ -80,17 +80,18 @@
 
 <!-- HOST -->
 <host>
-<center>
+<div align="center">
 <textarea id="localOffer" name="localOffer" rows="10" cols="100"></textarea>
 <textarea id="remoteAnswer" name="remoteAnswer" rows="10" cols="100"></textarea>
 <br>
 <button id="answerRecdBtn" >Connect</button>
 <br>
+</div>
 </host>
 
 <!-- GUEST -->
 <guest>
-<center>
+<div align="center">
 <textarea id="remoteOffer" name="remoteOffer" rows="10" cols="100"></textarea>
 <br>
 <button  id="offerRecdBtn" >Okay, I pasted it.</button>
@@ -98,7 +99,6 @@
 <textarea id="localAnswer" name="localAnswer" rows="10" cols="100"></textarea>
 <br>
 <button id="answerSentBtn" > Okay, I sent it.</button>
-</center>
 </div>
 </guest>
 
