@@ -32,18 +32,20 @@ var pc1icedone = false;
 function Hideall() {
 	$("host").hide();
 	$("guest").hide();
-});
 };
 
+//Quando clicar no botão "host" gera a parte de criação de Lobby
 $('#createBtn').click(function () {
-	document.getElementById("connection").innerHTML = "Conectando";
-    	$("#createBtn").hide();
-    	$("host").show();
+	document.getElementById("connectionStatus").innerHTML = "Criando Conexão";
+    $("#createBtn").hide();
+    $("#joinBtn").hide();
+    $("host").show();
 	createLocalOffer();
 });
 
 $('#joinBtn').click(function () {
 	$("#joinBtn").hide();
+	$("#createBtn").hide();
 	$("guest").show();
 });
 
@@ -51,12 +53,13 @@ $('#offerRecdBtn').click(function () {
 	var offer = $('#remoteOffer').val();
 	var offerDesc = new RTCSessionDescription(JSON.parse(offer));
 	console.log("Received remote offer", offerDesc);
-	document.getElementById("connection").innerHTML = "Conectando";
+	document.getElementById("connectionStatus").innerHTML = "Conectando";
 	handleOfferFromPC1(offerDesc);
 });
 
 $('#answerRecdBtn').click(function () {
 	var answer = $('#remoteAnswer').val();
+	document.getElementById("connectionStatus").innerHTML = "Conexão Gerada. Esperando Host";
 	var answerDesc = new RTCSessionDescription(JSON.parse(answer));
 	handleAnswerFromPC2(answerDesc);
 });
@@ -71,9 +74,9 @@ function setupDC1() {
 		console.log("Created datachannel (pc1)");
 		dc1.onopen = function (e) {
 			console.log('data channel connect');
-			document.getElementById("connection").innerHTML = "Conectando";
+			document.getElementById("connectionStatus").innerHTML = "Conectando";
 			Hideall();
-		}
+		};
 		dc1.onmessage = function (e) {
 			console.log("Got message (pc1)", e.data);
 			enemy_x = parseInt(e.data.substring(3, 7));
@@ -104,6 +107,7 @@ function createLocalOffer() {
 	pc1.createOffer(function (desc) {
 		pc1.setLocalDescription(desc, function () {}, function () {});
 		console.log("created local offer", desc);
+		document.getElementById("connectionStatus").innerHTML = "Conexão Gerada. Esperando Guest";
 	}, function () {
 		console.warn("Couldn't create offer");
 	});
@@ -113,12 +117,13 @@ pc1.onicecandidate = function (e) {
 	console.log("ICE candidate (pc1)", e);
 	if (e.candidate == null) {
 		$('#localOffer').html(JSON.stringify(pc1.localDescription));
+		document.getElementById("connectionStatus").innerHTML = "Conexão Gerada. Esperando Guest";
 	}
 };
 
 function handleOnconnection() {
 	console.log("Datachannel connected");
-	document.getElementById("connection").innerHTML = "Conectado";
+	document.getElementById("connectionStatus").innerHTML = "Conectado";
 	connection=true;
 	Hideall();
 }
@@ -163,10 +168,11 @@ pc2.ondatachannel = function (e) {
 	activedc = dc2;
 	dc2.onopen = function (e) {
 		console.log('data channel connected');
-		document.getElementById("connection").innerHTML = "Conectado";
+		document.getElementById("connectionStatus").innerHTML = "Conectado";
 		connection = true;
 		Hideall();
-	}
+	};
+	
 	dc2.onmessage = function (e) {
 		console.log("Got message (pc2)", e.data);
 		enemy_x = parseInt(e.data.substring(3, 7));

@@ -19,7 +19,7 @@ var RTCMultiSession = function(options) {
 		document.getElementById("connection").innerHTML = "ERRO - Aperte F5";
 	}
 	}
-    }
+    };
 };
 
 

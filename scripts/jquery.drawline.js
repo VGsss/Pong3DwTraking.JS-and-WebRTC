@@ -13,7 +13,7 @@
 		});
 		
 		return this;
-	}
+	};
 	
 	$.fn.getCanvas=function(){
 		
@@ -22,7 +22,7 @@
 		}
 		
 		return $(this).children("canvas.j-draw-unit")[0].getContext('2d');
-	}
+	};
 	
 	$.fn.canvas_compatible=false;
 	try {

@@ -15,30 +15,6 @@ tracking.track('#video', tracker, {camera: true});
 var player_x;
 var player_y;
 
-function toggle_blocks() {
-    if (enable_blocks) {
-        // Turn blocks off
-        enable_blocks = false;
-
-        var blocks = $("div.block:visible");
-        // Flash and delete the blocks
-        blocks.css({ opacity: 0.8 });
-        blocks.fadeOut();
-
-        var html = "You are currently playing <b>without</b> blocks<br />";
-        html += "<a href=\"\" onclick=\"toggle_blocks(); return false;\">Turn blocks on</a>";
-        $("#blocks").html(html);
-    }
-    else {
-        // Turn blocks on
-        enable_blocks = true;
-
-        var html = "You are currently playing <b>with</b> blocks<br />";
-        html += "<a href=\"\" onclick=\"toggle_blocks(); return false;\">Turn blocks off</a>";
-        $("#blocks").html(html);
-    }
-}
-
 function init_board() {
     // Put DOM objects into variables to decrease performance
     board = $("#board");
@@ -49,10 +25,6 @@ function init_board() {
 
     // Set the initial game status
     started = false;
-
-    // Play with power up blocks?
-    enable_blocks = true;  // Will be toggled to false
-	toggle_blocks();
 
     // Get board size
     width = board.width();

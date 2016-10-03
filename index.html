@@ -5,9 +5,8 @@
 </head> 	
 
 <body> 
-
-	<!-- HTML5 component that shows the video -->	
-	<div><center><video id="video" width="300" height="225" preload autoplay loop muted controls></video></div>
+	
+	<div align="center"><video id="video" width="300" height="225" preload autoplay loop muted ></video></div>
 <br>
 <div id="board">
     <div id="game">
@@ -64,7 +63,7 @@
 	Then, place the racket behind the ball, and move and click your mouse inside the field of the game. The game will start. Enjoy.
 	<br>
 	<br>
-	<center>Multiplayer:</center><br>
+	<div align="center">Multiplayer:<br>
 	Same instructions as Singleplayer but this time, if you be a host, you need to click the Host button, and copy the code that will pop up and send it to the second player. The second player will have to place the code send by you in the box that will appear after they clicked in the Guest button.
 	After they placed the code, they have to click in the Okay,I Pasted it button then send to you the generated code in the box below the one that they copy/pasted your code and send it to you. You will have to place the code they send in the box below the code that was generated when you clicked the Host button and click in Try to Connect button.
 	The connection will occour and if it connect you will see the Connected status below the playfield
@@ -72,12 +71,12 @@
 <br>
 
 <div id="multiplayer">
-<center><div id="connection" style="color:#FFFFFF">Desconectado</div></center>
+<div align="center"><div id="connectionStatus" style="color:#FFFFFF">Desconectado</div>
 <br>
-<center>
+<div align="center">
 <button id="createBtn">Host</button>
 <button id="joinBtn">Guest</button>
-</center>
+</div>
 
 <!-- HOST -->
 <host>
@@ -87,6 +86,7 @@
 <br>
 <button id="answerRecdBtn" >Connect</button>
 <br>
+</host>
 
 <!-- GUEST -->
 <guest>
@@ -100,6 +100,7 @@
 <button id="answerSentBtn" > Okay, I sent it.</button>
 </center>
 </div>
+</guest>
 
 <script type="text/javascript" src="scripts/jquery-1.4.2.min.js"></script>
 <script type="text/javascript" src="scripts/jquery.drawline.js"></script>
@@ -123,7 +124,7 @@
 <br>
 <br>
 
-<center><a  style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">Link to the Github</a></center>
+<div align="center"><a style="color:#FFFFFF" href="https://github.com/VGsss/Pong3DwTraking.JS-and-WebRTC">Link to the Github</a>
 
 </body>
 </html>

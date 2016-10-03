@@ -1,6 +1,6 @@
 /*
 * Collision Check Plugin v1.1
-* Copyright (c) Constantin Groß, 48design.de
+* Copyright (c) Constantin Groï¿½, 48design.de
 * v1.2 rewrite with thanks to Daniel
 *
 * @requires jQuery v1.3.2
@@ -52,5 +52,5 @@
         });
         // return collection
         return c;
-    }
+    };
 })(jQuery);
