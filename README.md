@@ -8,6 +8,4 @@ Website for test(Need a Webcam to use): https://vgsss.github.io/Pong3DwTraking.J
 
 It's use the webcam to track anything yellow and use as a controller in the game.
 
-To start, click inside the game.
-
-Doesn't work anymore in Chrome, please use Firefox.
+To start, click in the ball.
